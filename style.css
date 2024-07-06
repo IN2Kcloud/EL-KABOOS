@@ -17,11 +17,9 @@ a:hover{ filter: drop-shadow(0px 0px 10px #f1f1f1); }
 /*.socials{}*/
 
 /*.socials{ position: fixed; top: 5%;}*/
-  
 .socials svg{ width: 33; height: 33; margin: 0 20px; transition: all 0.1s ease-in-out; transform: scale(1); }
-  
-.socials svg:hover{ transform: scale(1.2); filter: drop-shadow(0px 0px 5px #f1f1f1); }
-.socials span {position: relative; z-index: 1;} .socials span::before {content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -0.25em; right: -0.25em; background-color: #f1f1f1; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.socials span:hover::before { transform: scaleX(1); transform-origin: center left;}
+/*.socials svg:hover{ transform: scale(1.2); filter: drop-shadow(0px 0px 5px #f1f1f1); }*/
+.socials span {position: relative; z-index: 1; mix-blend-mode: difference;} .socials span::before {content: ''; position: absolute; z-index: -1; top: -30%; bottom: 70%; left: -0.25em; right: -0.25em; background-color: #f1f1f1; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.socials span:hover::before { transform: scaleX(1); transform-origin: center left;}
 .socials span:hover .socialsII{color:#111}
 
 /*HEADLINE*/
@@ -72,12 +70,13 @@ section{ height: 100vh; width: 100%; position:relative; display: flex; align-ite
 .svc-II{font-size: 2vw; position: absolute; top: 90%;}
 .svc-II span {position: relative; display: flex; justify-content: center; text-align: center; z-index: 1; color: #111; filter: drop-shadow(0px 0px 10px #111)} .svc-II span::before {content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -0.25em; right: -0.25em; background-color: #f1faee; transform: scaleX(1); transform-origin: center left;}
 nav{ width: 100vw; margin: 0 auto; }
-.nav-link{ display: flex; justify-content: center; align-items: center; text-align: center; font-size: 5vw; letter-spacing: 4px; font-weight: 700; color: #f1f1f1; -webkit-text-stroke: 3px #f1f1f1; border-top: 1px solid #E2DFE9; border-bottom: 1px solid #E2DFE9; line-height: 15vh; margin-top: 5vh; margin-bottom: 5vh; transition: .3s ease; text-wrap:unset; cursor: pointer;}
+.nav-link{ display: flex; justify-content: center; align-items: center; text-align: center; font-size: 5vw; letter-spacing: 4px; font-weight: 700; color: #f1f1f1; -webkit-text-stroke: 3px #f1f1f1; border-top: 1px solid #E2DFE9; border-bottom: 1px solid #E2DFE9; line-height: 3vh; padding-top: 5vh; padding-bottom: 5vh; margin-top: 5vh; margin-bottom: 5vh; transition: .3s ease; text-wrap:unset; cursor: pointer;}
 .nav-link:hover{ color: #f1f1f1; }
-/*
-.NAV span {position: relative; z-index: 1;} .NAV span::before {content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -0.25em; right: -0.25em; background-color: #f1f1f1; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.NAV span:hover::before { transform: scaleX(1); transform-origin: center left;}
+
+.NAV span {position: relative; font-size: 5vw; letter-spacing: 6px; font-weight: 600; z-index: 1;} .NAV span::before {content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -0.25em; right: -0.25em; background-color: #f1faee; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.NAV span:hover::before { transform: scaleX(1); transform-origin: center left;}
 .NAV span:hover .nav-link{color:#111; -webkit-text-stroke: 3px #111; filter: drop-shadow(0px 0px 10px #111)}
-*/
+.NAV span:hover {color:#111; -webkit-text-stroke: 3px #111; filter: drop-shadow(0px 0px 10px #111)}
+
 .img-wrapper{ position: absolute; left: 0; top: 0; width: 30vw; height: 40vw; border: 2px solid #f1f1f1; /*border-radius: 50%;*/ overflow: hidden; pointer-events: none; z-index: 0; mix-blend-mode: difference; visibility: hidden; transform: scale(0.3); }
 .img-placeholder, .img-placeholder img{ height: 100%; width: 100%; }
 .img-placeholder img{ object-fit: cover; display: block; }
@@ -86,27 +85,41 @@ nav{ width: 100vw; margin: 0 auto; }
 
 /* -- ↓ ↓ ↓ some responsiveness ↓ ↓ ↓ -- */
 
-@media (orientation:portrait){
+@media screen and (min-device-width: 1024px) and (max-device-width: 1280px){
+  .title .titleII{ font-size: 0.75rem; }
+  .socials svg{ width: 20; height: 20;}
+  .section-1 {height:8vh;}
+  .section-2 {height:8vh;}
 
-  .body { align-items: center; overflow: hidden; height: 100vh; }  
-  .socials svg{ width: 33; height: 33;}
+  .svc{font-size: 5vw; top: 15%;}
+  .svc-II{font-size: 4vw; position: absolute; top: 88%;}
+
+  #cards { max-width: 100vw;}
+  .card { flex-shrink: 1; width: calc(50% - 4px); height: 25vw; width: 25vw; }
+}
+
+@media only screen and (max-device-width: 480px){
+
+  .body { align-items: center; overflow: hidden; height: 100vh; } 
+  .text-container{top: 2%;} 
+  .socials svg{ width: 50; height: 50;}
   .title{ font-size: 2rem; }
+
+  .team-copy0-wrap{font-size: 5rem;}
 
   #cards { max-width: 100vw; /*padding: 10px 0px;*/ }  
   .card { flex-shrink: 1; width: calc(50% - 4px); height: 44vw; width: 44vw; }
   .card-image { height: 100%; }
   .card:hover .card-image img { clip-path: circle(5vh at var(--mouse-x) var(--mouse-y)); display: block;}
 
-  .svc{font-size: 8vw; top: 15%;}
+  .svc{font-size: 8vw; top: 10%;}
   .svc-II{font-size: 6vw; position: absolute; top: 88%;}
   nav{ gap: 100px; }
   #nav a{font-size: 4vw; font-weight: 300;}
-  .nav-link{line-height: 10vh; margin-top: 5vh; margin-bottom: 5vh;}
+  .nav-link{line-height: 1vh; margin-top: 5vh; margin-bottom: 5vh;}
   .img-wrapper{width: 60vw; height: 80vw;}  
   .nav-link{font-size: 4vh; font-weight: 700;}  
-
 }
-
 
 /* CSS from other files */
 .loading{display:flex;align-items:center;justify-content:center;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#f1faee;opacity:0;transition:0.5s;}
