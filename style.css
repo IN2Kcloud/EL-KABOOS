@@ -61,7 +61,7 @@ h1 { display: inline-block; padding-top: 0.9rem; line-height: 6rem; margin-top: 
 .divider.d2 { width: 15vw; }
 .divider.d3 { width: 20vw; }
 
-canvas { display: block; position: absolute; top: 0px; left: 0px; z-index: 1; pointer-events: none; }
+canvas { display: block; position: absolute; top: 0px; left: 0px; z-index: 3; pointer-events: none; }
 
 .NAV span {position: relative; font-size: 5vw; letter-spacing: 6px; font-weight: 600; z-index: 1;} .NAV span::before {content: ''; position: absolute; z-index: -1; top: 15%; bottom: 25%; left: -0.25em; right: -0.25em; background-color: #f1faee; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.NAV span:hover::before { transform: scaleX(1); transform-origin: center left;}
 .NAV span:hover {color:#111; -webkit-text-stroke: 3px #111; filter: drop-shadow(0px 0px 10px #111)}
