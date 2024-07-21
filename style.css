@@ -6,16 +6,16 @@
 html, body { background-color: #111; margin: 0px; overflow-x: hidden; padding: 0px; }
 a { color: #f1f1f1; text-decoration: none; transition: all 0.5s ease-in-out; } /*a:hover{ filter: drop-shadow(0px 0px 10px #f1f1f1); }*/
 
-.LP{ display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh;}
-.text-container{ display: flex; /*flex-direction: column;*/ justify-content: space-between; align-items: center; top: 5%; height: 6vh; width: 100vw; position: absolute; padding: 2vw 5vw; background-color: #111; border-top: 3px solid #f1f1f1; border-bottom: 3px solid #f1f1f1; /*left: 0;*/ z-index: 3; } 
+.LP{ /*display: flex; align-items: center; justify-content: center;*/ width: 100vw; height: 100vh; overflow: hidden;}
+
+.text-container{ display: flex; /*flex-direction: column;*/ justify-content: space-between; align-items: center; top: 1%; height: 3vh; width: 100vw; position: fixed; padding: 2vw 5vw; /*background-color: #111; border-top: 3px solid #f1f1f1; border-bottom: 3px solid #f1f1f1; left: 0;*/ z-index: 3; } 
 .title{ font-size: 1rem; text-align: center; /*text-transform: uppercase;*/ letter-spacing: 0.5rem; font-weight: 500; color: #f1f1f1; }
 .title span {position: relative; z-index: 1;} .title span::before {content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -0.25em; right: -0.25em; background-color: #f1f1f1; transform-origin: center right; transform: scaleX(0); transition: transform 0.2s ease-in-out;}.title span:hover::before { transform: scaleX(1); transform-origin: center left;}
 .title span:hover .titleII{color:#111; filter: drop-shadow(0px 0px 10px #111)}
 
-.container { overflow: hidden; background: #f1faee; cursor: ew-resize; white-space: nowrap; padding: 10vh 0; }
-.ttl { font-family: "Rading", "Canopee", sans-serif; font-size: 12vw; position: relative; color: #000; display: inline-block; margin: 0; padding: 0 15%; will-change: transform; }
-@font-face{font-family:'Rading';src:url('./media/Rading.otf') format('opentype');font-display:swap;}
-@font-face{font-family:'Rading';src:url('./media/RadingRegular.ttf') format('truetype');font-display:swap;}  
+.menu-col.menu-img { position: relative; display: flex; overflow: hidden; height: 100vh; width: 100vw; translate: none; rotate: none; scale: none; }
+.menu-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+#img-1 { opacity: 0.9; } #img-2 { opacity: 0.7; } #img-3 { opacity: 0.5; } #img-4 { opacity: 0.3; }
 
 /*.socials{}*/
 
@@ -36,7 +36,7 @@ a { color: #f1f1f1; text-decoration: none; transition: all 0.5s ease-in-out; } /
 .section-1 {height:6vh; width: 100vw; background-color: #111; border-top: 2px solid #E2DFE9; border-bottom: 2px solid #E2DFE9; position:absolute; display:flex;align-items: center; top: 2vh; z-index: 2; overflow:hidden;} 
 .section-2 {height:6vh; width: 100vw; background-color: #111; border-top: 2px solid #E2DFE9; border-bottom: 2px solid #E2DFE9; position:absolute; display:flex;align-items: center; top: 93vh; z-index: 2; overflow:hidden;} 
 .team-copy{height: 50vh; margin-top:25vh;margin-bottom:25vh;margin-right: 0px;margin-left: 0px; overflow: hidden;} .team-copy0{display:flex; white-space:nowrap; overflow:hidden;} .team-copy0-wrap{font-size:2rem;letter-spacing:2px;line-height:15vh;padding-right:0.3em;margin:-0.3rem 0;} .team-copy0-wrap span {display:flex; align-items: center; gap: 2px; text-align: center;} .fa-sun, .fa-solid{font-size:1rem; position: relative; right:2%;}
-.team-copy0-wrap{animation:subLoop0 30s linear infinite;}
+.team-copy0-wrap{animation:subLoop0 5s linear infinite;}
 @keyframes subLoop0{from{transform: translateX(0);}to{transform: translateX(-100%);}}
 
 /*SERVICES*/
@@ -93,7 +93,6 @@ canvas { display: block; position: absolute; top: 0px; left: 0px; z-index: 3; po
   .svc-II{font-size: 3vw; position: absolute; top: 85%;}
 
   .con span{ font-size: 9rem; line-height: 9rem; padding: 0 10px; }
-
 }
 
 @media (max-width: 1024px) {
@@ -110,7 +109,6 @@ canvas { display: block; position: absolute; top: 0px; left: 0px; z-index: 3; po
   .text{font-size: 2rem;}
 
   .con span{ font-size: 6rem; line-height: 6rem; padding: 0 10px; }
-
 }
 
 @media only screen and (max-device-width: 480px){
@@ -145,7 +143,6 @@ canvas { display: block; position: absolute; top: 0px; left: 0px; z-index: 3; po
   .slider .list .item { width: 20vw; /* Updated width */ }
   @keyframes autoRun { from { left: 100%; } to { left: calc(20vw * -1); /* Updated width in animation */ } }
   @keyframes reversePlay { from { left: calc(20vw * -1); /* Updated width in animation */ } to { left: 100%; } }
-
 }
 
 /* CSS from other files */
