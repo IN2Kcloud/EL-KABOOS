@@ -94,7 +94,7 @@ html.lenis,html.lenis body{height:auto;}
 }
 
 @media (orientation: portrait) {
-  video {display: none;}
+  /*video {display: none;}*/
   .story { font-size: 2rem; }
   .signa {font-size: 50px; letter-spacing: 0px;}
   .item {width: 200px;height: 200px;}
@@ -107,4 +107,28 @@ html.lenis,html.lenis body{height:auto;}
 @media (max-width: 500px) and (max-height: 800px) { 
   .story { font-size: 1.5rem; }
   #menu-trigger { width: 80px; height: 80px; font-size: 1.5rem; } 
+}
+
+@media (orientation: portrait) {
+  .LPBGII {
+    width: 100vw;
+    height: 100dvh; /* Dynamic height for mobile browsers */
+    overflow: hidden;
+  }
+
+  .LPBGII video {
+    /* 1. Swap dimensions so it fills the screen after rotation */
+    width: 100vh; 
+    height: 100vw;
+
+    /* 2. Rotate and use object-fit to crop any edges */
+    object-fit: cover;
+    transform: rotate(90deg);
+
+    /* 3. Center it: Use fixed positioning to keep it in the middle */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
 }
