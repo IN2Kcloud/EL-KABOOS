@@ -80,6 +80,20 @@ html.lenis,html.lenis body{height:auto;}
 .X::before{--angle:45deg;}
 .X::after{--angle:-45deg;}
 
+/* Custom Scrollbar Container */
+.custom-scrollbar { position: fixed; right: 100px; /* Adjust spacing from edge */ top: 50%; transform: translateY(-50%); width: 10px; height: 60vh; /* Length of the scrollbar track */ z-index: 99; mix-blend-mode: difference; /* Ensures it's visible on any background */ display: flex; justify-content: center; display: none; }
+/* The Track */
+.scroll-track { position: relative; width: 10px; height: 100%; background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+/* The Handle (Thumb) */
+.scroll-thumb { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 30px; /* Grabbable area */ height: 30px; /* Size of the handle */ border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+/* Inner visual part of the thumb to match your "KABOOS" style */
+.thumb-inner { width: 30px; height: 100%; border-radius: 50%; background: #fff; box-shadow: 0 0 10px #fff; filter: url(#minFilter); /* Using your SVG filter */ transition: width 0.3s ease; }
+.scroll-thumb:active .thumb-inner { width: 10px; /* Grows when clicked/touched */ }
+/* Hide native scrollbar but keep functionality */
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
+@media (orientation: portrait) { .custom-scrollbar { right: 20px; height: 50vh; /* Smaller on mobile */ display: inline; } }
+
 .loadinger{display:flex;align-items:center;justify-content:center;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#fff;opacity:0;transition:0.5s;}
 .before-load .loadinger{opacity:1;}
 .kaboos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10vw;aspect-ratio:1/1;overflow:hidden;z-index:3;}
