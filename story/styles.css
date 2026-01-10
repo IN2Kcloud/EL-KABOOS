@@ -86,6 +86,7 @@ html.lenis,html.lenis body{height:auto;}
 .kaboosCover{background-color: #fff;border-radius: 50%; position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:9vw;aspect-ratio:1/1;overflow:hidden;z-index:4;mix-blend-mode: difference;}
 .kI,.kII,.kIII{position:absolute;top:50%;left:50%;transform-origin:50% 50%;display:block;}
 .kI{width:100%;z-index:1;} .kII{width:107%;z-index:2;} .kIII{width:40%;height: 40%; z-index:3;}
+@media (orientation: portrait) {.kaboos{width: 50vw;} .kaboosCover{width: 45vw;}}
 
 @media screen and (max-width:768px){ 
   .menu-container {flex-direction: column; height: 33vh;}
