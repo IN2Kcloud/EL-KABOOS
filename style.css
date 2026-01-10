@@ -113,3 +113,27 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
 .kI,.kII,.kIII{position:absolute;top:50%;left:50%;transform-origin:50% 50%;display:block;}
 .kI{width:100%;z-index:1;} .kII{width:107%;z-index:2;} .kIII{width:40%;z-index:3;}
 @media (orientation: portrait) {.kaboos{width: 50vw;} .kaboosCover{width: 45vw;}}
+
+@media (orientation: portrait) {
+  .LPBG {
+    width: 100vw;
+    height: 100dvh; /* Dynamic height for mobile browsers */
+    overflow: hidden;
+  }
+
+  .LPBG video {
+    /* 1. Swap dimensions so it fills the screen after rotation */
+    width: 100vh; 
+    height: 100vw;
+
+    /* 2. Rotate and use object-fit to crop any edges */
+    object-fit: cover;
+    transform: rotate(90deg);
+
+    /* 3. Center it: Use fixed positioning to keep it in the middle */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
