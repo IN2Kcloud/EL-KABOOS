@@ -76,6 +76,50 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   });
+
+  // --- Inside your DOMContentLoaded or below Lenis init ---
+
+  const thumb = document.querySelector('.scroll-thumb');
+  const track = document.querySelector('.scroll-track');
+  
+  // 1. Move thumb when page scrolls
+  lenis.on('scroll', ({ progress }) => {
+    // progress is a value between 0 and 1
+    const trackHeight = track.offsetHeight - thumb.offsetHeight;
+    const moveY = progress * trackHeight;
+    
+    // Use GSAP for maximum smoothness (since you already have it)
+    gsap.set(thumb, { y: moveY });
+  });
+  
+  // 2. Drag logic for Touch/Mouse
+  let isDragging = false;
+  
+  const onDrag = (e) => {
+    if (!isDragging) return;
+    
+    const rect = track.getBoundingClientRect();
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    // Calculate percentage of track
+    let pos = (clientY - rect.top) / rect.height;
+    pos = Math.max(0, Math.min(1, pos)); // Clamp between 0 and 1
+    
+    // Tell Lenis to scroll to that percentage
+    lenis.scrollTo(pos * (document.documentElement.scrollHeight - window.innerHeight), {
+      immediate: true
+    });
+  };
+  
+  thumb.addEventListener('mousedown', () => isDragging = true);
+  thumb.addEventListener('touchstart', () => isDragging = true, { passive: false });
+  
+  window.addEventListener('mousemove', onDrag);
+  window.addEventListener('touchmove', onDrag, { passive: false });
+  
+  window.addEventListener('mouseup', () => isDragging = false);
+  window.addEventListener('touchend', () => isDragging = false);
+  
 });
 
 // M E M O R I E S
