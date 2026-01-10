@@ -72,7 +72,6 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
 .menu-footer{width:100%;display:flex;}
 .menu-sub-col{flex:1;} .menu-sub-item p{position:relative;color:#000;}
 .menu-link,.menu-sub-item{clip-path:polygon(0 0,100% 0,100% 100%,0% 100%);overflow: visible;}
-@media(max-width:900px){.menu-img{display:none;}}
 .click {cursor: pointer;position: relative;width:fit-content; z-index: 0;overflow: visible;filter:none;}
 .click a {color: #000; z-index: 1; transition: all 0.3s ease;}
 .click a:hover {color: #fff;}
@@ -121,3 +120,4 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
     .menu-links {flex-direction: column; height: 25vh; bottom: 20%; }
     .menu-link p {font-size: 50px; line-height: .8;}
 }
+
