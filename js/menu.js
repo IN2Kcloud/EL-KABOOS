@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const defaultEase = "power4.inOut";
 
   gsap.set(".menu-logo img", { y: 50 });
-  gsap.set(".menu-link p", { y: 40 });
+  gsap.set(".menu-link p", { y: 100 });
   gsap.set(".menu-sub-item p", { y: 12 });
   gsap.set(["#img-2, #img-3, #img-4"], { top: "150%" });
 
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
           clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         });
         gsap.set(".menu-logo img", { y: 50 });
-        gsap.set(".menu-link p", { y: 40 });
+        gsap.set(".menu-link p", { y: 100 });
         gsap.set(".menu-sub-item p", { y: 12 });
         gsap.set(".menu-items", { opacity: 1, top: "0px" });
         gsap.set(["#img-2, #img-3, #img-4"], { top: "150%" });
