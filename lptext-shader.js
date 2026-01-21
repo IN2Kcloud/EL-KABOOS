@@ -28,19 +28,19 @@ const uniforms = {
 // === TEXT CANVAS ===
 const textCanvas = document.createElement('canvas');
 textCanvas.width = 2048;
-textCanvas.height = 400;
+textCanvas.height = 300;
 const ctx = textCanvas.getContext('2d');
 
 let marqueeX = 0;
-let marqueeY = 0.8; // 0 = top, 0.5 = center, 1 = bottom
+let marqueeY = .9; // 0 = top, 0.5 = center, 1 = bottom
 
 const marqueeText =
   " • KABOOS • UNLEASHING PURPOSE THROUGH THE VIVID TAPESTRY OF CREATION • TRANSCENDING THE BOUNDARIES OF ARTISTRY";
-const fontSize = 180;
+const fontSize = 400;
 
 ctx.font = `600 ${fontSize}px "Teko", "Berani", "Bebas Neue", sans-serif`;
 ctx.fillStyle = "#ffffff"; // WHITE TEXT
-ctx.textBaseline = "bottom";
+ctx.textBaseline = "center";
 
 function drawMarquee() {
   ctx.clearRect(0, 0, textCanvas.width, textCanvas.height);
