@@ -1,10 +1,81 @@
+// ========== MARQUEE ========== //
 window.addEventListener('load', () => {
-  document.body.classList.remove('before-load');
-});
-document.querySelector('.loadinger').addEventListener('transitionend', (e) => {
-  document.body.removeChild(e.currentTarget);
+  const progressText = document.querySelector('.progress-text');
+  const loaderData = { value: 0 };
+
+  // Create a timeline to handle the sequence
+  const tl = gsap.timeline({
+    onComplete: () => {
+      // 1. Hide the loader once the counter hits 100
+      document.body.classList.remove('before-load');
+      // 2. Start your marquee
+      initMarquee();
+    }
+  });
+
+  // Animate the value from 0 to 100
+  tl.to(loaderData, {
+    value: 100,
+    duration: 3, // How long you want the loader to stay (seconds)
+    ease: "power1.inOut",
+    onUpdate: () => {
+      progressText.textContent = Math.round(loaderData.value) + "%";
+    }
+  });
+
+  // Keep your existing Marquee function
+  const initMarquee = () => {
+    const wrapper = document.querySelector(".marquee-content");
+    if (!wrapper) return;
+    const items = wrapper.innerHTML;
+    wrapper.innerHTML = items + items + items; 
+    const scrollWidth = wrapper.scrollWidth / 3;
+
+    gsap.to(wrapper, {
+      x: -scrollWidth,
+      duration: 100,
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % scrollWidth)
+      }
+    });
+  };
 });
 
+// Clean up DOM after transition
+document.querySelector('.loadinger').addEventListener('transitionend', (e) => {
+  if (e.propertyName === 'opacity') {
+    e.currentTarget.remove();
+  }
+});
+
+// ======================== TURBULENCE ======================== //
+
+const turbulence = document.getElementById("text-turbulence");
+let svgFrame = 0;
+let lastSVGTime = 0;
+
+function animateSVGFilter(time) {
+  // Throttle to ~10 frames per second for that "jittery" hand-drawn look
+  if (time - lastSVGTime > 100) {
+    svgFrame += 0.1; 
+    
+    // Oscillate frequency between 0.04 and 0.06
+    const freq = 0.05 + Math.sin(svgFrame) * 0.01;
+    
+    if (turbulence) {
+      turbulence.setAttribute("baseFrequency", freq);
+    }
+    
+    lastSVGTime = time;
+  }
+  requestAnimationFrame(animateSVGFilter);
+}
+
+requestAnimationFrame(animateSVGFilter);
+
+// ======================== SUM OTHA SH*T ======================== //
 // Variables
 const el = document.querySelector(".ttl");
 
@@ -78,15 +149,14 @@ function animateMe() {
 
 window.requestAnimationFrame(animateMe);
 
-
 // FORCE VIDEO PLAY ----------
-    document.addEventListener("DOMContentLoaded", () => {
-      const videos = document.querySelectorAll("video");
-    
-      videos.forEach(vid => {
-        vid.play().catch(() => {
-          vid.muted = true; // force mute if needed
-          vid.play().catch(() => {});
-        });
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  const videos = document.querySelectorAll("video");
+
+  videos.forEach(vid => {
+    vid.play().catch(() => {
+      vid.muted = true; // force mute if needed
+      vid.play().catch(() => {});
     });
+  });
+});
