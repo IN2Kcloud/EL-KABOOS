@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const geometry = new THREE.TubeGeometry(
       curve,
       120,     // tubular segments (smoothness)
-      0.25,    // 🔥 thickness (radius)
+      0.03,    // 🔥 thickness (radius)
       8,       // radial segments
       false
     );
