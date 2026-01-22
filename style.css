@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Teko';}
 *::after,*::before{box-sizing:border-box;}
@@ -17,6 +18,26 @@ body::before{animation:grain 8s steps(10) infinite;background-image:url(./media/
 .LPBG video{width:100%;height:auto;}
 .LPBGII{width:100vw;height:100vh;position:absolute;top:0;left:0;mix-blend-mode:screen; pointer-events: none;opacity: 0;transition: opacity .5s ease;}
 .LPBGII video {width:100%;height:auto;}
+@media (orientation: portrait) {
+  .LPBG { width: 100vw; height: 100dvh; /* Dynamic height for mobile browsers */ overflow: hidden; }
+  .LPBG video {
+    /* 1. Swap dimensions so it fills the screen after rotation */
+    width: 100vh;  height: 100vw;
+    /* 2. Rotate and use object-fit to crop any edges */
+    object-fit: cover; transform: rotate(90deg);
+    /* 3. Center it: Use fixed positioning to keep it in the middle */
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); 
+  }
+  .LPBGII { width: 100vw; height: 100dvh; /* Dynamic height for mobile browsers */ overflow: hidden; }
+  .LPBGII video {
+    /* 1. Swap dimensions so it fills the screen after rotation */
+    width: 100vh;  height: 100vw;
+    /* 2. Rotate and use object-fit to crop any edges */
+    object-fit: cover; transform: rotate(90deg);
+    /* 3. Center it: Use fixed positioning to keep it in the middle */
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); 
+  }
+}
 
 #LPtextCanvas{position:absolute;top:50%;left:50%;width:100vw;height:auto;transform:translate(-50%,-50%);z-index:1;pointer-events:none;opacity: 1;transition: opacity .5s ease;}
 
@@ -134,18 +155,10 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
 
 .loadinger{display:flex;align-items:center;justify-content:center;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#fff;opacity:0;transition:0.5s;}
 .before-load .loadinger{opacity:1;}
-.progress-text {
-  position: absolute;
-  bottom: 10px; /* Adjust position as needed */
-  left: 100px;
-  font-family: 'BlackFlag','Teko', "Inter", sans-serif; /* Use your brand font here */
-  font-size: 5rem;
-  z-index: 10;
-  color: #000; /* Change based on your background */
-}
+.progress-text { position: absolute; bottom: 10px; left: 100px; font-family: 'BlackFlag','Teko', "Inter", sans-serif; font-size: 5rem; z-index: 10; color: #000; }
+@media (orientation: portrait) { .progress-text {font-size: 2rem; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);} }
 
 @media (orientation: portrait) { 
-  .LPBG video { width: 100vh; height: 100vw; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); } 
   .menu {flex-direction: column; justify-content: start;}
   .menu-items {display: none;}
   .menu-img{flex: .75;/*position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;*/}
@@ -153,5 +166,4 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
   .menu-link p {font-size: 50px; line-height: .8;}
   .marquee-container {display: none;}
   #LPtextCanvas {display: none;}
-  .progress-text {font-size: 2rem; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);}
 }
