@@ -33,6 +33,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	width: 100vw !important;
 	min-height: 100vh;
+	user-select: none; -webkit-user-select: none;/* Safari */ -moz-user-select: none;/* Firefox */ -ms-user-select: none;/* IE/Edge */ -webkit-user-drag: none; /* Prevent drag on WebKit browsers */
 }
 
 body::before{animation:grain 8s steps(10) infinite;background-image:url(../../media/noiseWII.png);content:'';height:300%;left:-50%;opacity:1;position:fixed;top:-100%;width:300%;z-index: 999;mix-blend-mode: difference;pointer-events: none;}
