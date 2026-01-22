@@ -159,6 +159,7 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
 @media (orientation: portrait) { .progress-text {font-size: 2rem; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);} }
 
 @media (orientation: portrait) { 
+  .signa {top:5%;}
   .menu {flex-direction: column; justify-content: start;}
   .menu-items {display: none;}
   .menu-img{flex: .75;/*position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;*/}
@@ -167,3 +168,4 @@ p{color:#fff;font-size:22px;font-weight:300;text-transform:uppercase;}
   .marquee-container {display: none;}
   #LPtextCanvas {display: none;}
 }
+
