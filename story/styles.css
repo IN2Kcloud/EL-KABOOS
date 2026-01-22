@@ -96,11 +96,8 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
 
 .loadinger{display:flex;align-items:center;justify-content:center;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:#fff;opacity:0;transition:0.5s;}
 .before-load .loadinger{opacity:1;}
-.kaboos{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10vw;aspect-ratio:1/1;overflow:hidden;z-index:3;}
-.kaboosCover{background-color: #fff;border-radius: 50%; position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:9vw;aspect-ratio:1/1;overflow:hidden;z-index:4;mix-blend-mode: difference;}
-.kI,.kII,.kIII{position:absolute;top:50%;left:50%;transform-origin:50% 50%;display:block;}
-.kI{width:100%;z-index:1;} .kII{width:107%;z-index:2;} .kIII{width:40%;height: 40%; z-index:3;}
-@media (orientation: portrait) {.kaboos{width: 50vw;} .kaboosCover{width: 45vw;}}
+.progress-text { position: absolute; bottom: 10px; left: 100px; font-family: 'BlackFlag','Teko', "Inter", sans-serif; font-size: 5rem; z-index: 10; color: #000; }
+@media (orientation: portrait) { .progress-text {font-size: 2rem; position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);} }
 
 @media screen and (max-width:768px){ 
   .menu-container {flex-direction: column; height: 33vh;}

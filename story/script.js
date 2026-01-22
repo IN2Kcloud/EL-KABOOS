@@ -1,9 +1,35 @@
+// ========== LOADER ========== //
 window.addEventListener('load', () => {
-  document.body.classList.remove('before-load');
+  const progressText = document.querySelector('.progress-text');
+  const loaderData = { value: 0 };
+
+  // Create a timeline to handle the sequence
+  const tl = gsap.timeline({
+    onComplete: () => {
+      // 1. Hide the loader once the counter hits 100
+      document.body.classList.remove('before-load');
+    }
+  });
+
+  // Animate the value from 0 to 100
+  tl.to(loaderData, {
+    value: 100,
+    duration: 5, // How long you want the loader to stay (seconds)
+    ease: "power1.inOut",
+    onUpdate: () => {
+      progressText.textContent = Math.round(loaderData.value) + "%";
+    }
+  });
 });
+
+// Clean up DOM after transition
 document.querySelector('.loadinger').addEventListener('transitionend', (e) => {
-  document.body.removeChild(e.currentTarget);
+  if (e.propertyName === 'opacity') {
+    e.currentTarget.remove();
+  }
 });
+
+// ============================== CARDS ============================== //
 
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);

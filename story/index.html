@@ -11,12 +11,7 @@
   </head>
   <body class="before-load loading">
     <div class="loadinger">
-      <div class="kaboosCover"></div>
-      <div class="kaboos">
-        <img class="kI" src="../media/KaboosTYPE.png" alt="">
-        <img class="kII" src="../media/KaboosTYPEII.png" alt="">
-        <img class="kIII" src="../media/KABOOS faceII.png" alt="">
-      </div>
+      <div class="progress-text">0%</div>
     </div>
     <section class="hero">
         <div class="section-1">
@@ -247,23 +242,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="./script.js"></script>
-
-    <script>
-      // GSAP rotations
-      gsap.set(".kI, .kII, .kIII", { xPercent: -50, yPercent: -50 });
-      const spins = [
-        gsap.to(".kI", { rotation: 360, repeat: -1, ease: "none", duration: 20 }),
-        gsap.to(".kII", { rotation: -360, repeat: -1, ease: "none", duration: 35 }),
-        gsap.to(".kIII", { rotation: 360, repeat: -1, ease: "none", duration: 10 })
-      ];
-      const skull = document.querySelector(".kaboos");
-      skull.addEventListener("mouseenter", () => {
-        spins.forEach(spin => gsap.to(spin, { timeScale: 3, duration: 1, ease: "power2.out" }));
-      });
-      skull.addEventListener("mouseleave", () => {
-        spins.forEach(spin => gsap.to(spin, { timeScale: 1, duration: 1.5, ease: "power2.inOut" }));
-      });
-    </script>
 
   </body>
 </html>
