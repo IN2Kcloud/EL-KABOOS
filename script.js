@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
     duration: 3, // How long you want the loader to stay (seconds)
     ease: "power1.inOut",
     onUpdate: () => {
-      progressText.textContent = Math.round(loaderData.value) + "%";
+      progressText.textContent = Math.round(loaderData.value);
     }
   });
 
@@ -160,3 +160,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
