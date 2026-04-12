@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @font-face{font-family:'Teko';src:url('../media/Teko-VariableFont_wght.ttf') format('truetype');font-display:swap;}
 @font-face{font-family:'BlackFlag';src:url('../media/BlackFlag.ttf') format('truetype');font-display:swap;}
-* {margin: 0;padding: 0;box-sizing: border-box;}
+/* === BASE & ROOT === */
+* {box-sizing: border-box; padding: 0; margin: 0; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;}
 html,body {background: #000;color: #fff;width: 100vw;height: 500vh;font-family: 'Teko', "Inter", sans-serif;overflow: hidden !important; user-select: none; -webkit-user-select: none;/* Safari */ -moz-user-select: none;/* Firefox */ -ms-user-select: none;/* IE/Edge */ -webkit-user-drag: none; /* Prevent drag on WebKit browsers */}
 svg {position: absolute; top: 0; left: 0;}
 img { width: 100%; height: 100%; object-fit: cover; }
