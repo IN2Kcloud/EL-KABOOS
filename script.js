@@ -1,3 +1,15 @@
+// ========== FORCE VIDEO PLAY ========== //
+document.addEventListener("DOMContentLoaded", () => {
+  const videos = document.querySelectorAll("video");
+
+  videos.forEach(vid => {
+    vid.play().catch(() => {
+      vid.muted = true; // force mute if needed
+      vid.play().catch(() => {});
+    });
+  });
+});
+
 // ========== MARQUEE ========== //
 window.addEventListener('load', () => {
   const progressText = document.querySelector('.progress-text');
@@ -148,16 +160,3 @@ function animateMe() {
 }
 
 window.requestAnimationFrame(animateMe);
-
-// FORCE VIDEO PLAY ----------
-document.addEventListener("DOMContentLoaded", () => {
-  const videos = document.querySelectorAll("video");
-
-  videos.forEach(vid => {
-    vid.play().catch(() => {
-      vid.muted = true; // force mute if needed
-      vid.play().catch(() => {});
-    });
-  });
-});
-

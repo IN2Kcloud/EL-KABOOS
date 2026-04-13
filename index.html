@@ -4,19 +4,17 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Digital Services" name="description" />
-    <meta name="keywords" content="Graphic Design, Video Production, Digital Marketing" />
     <meta name="author" content="Islame Nouaoui" /> 
+    <meta property="og:title" content="EL-KABOOS">
+    <meta property="og:description" content="Digital design, video production & creative experiences.">
+    <meta property="og:image" content="media/KaboosFACE.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#000">
     <link rel="apple-touch-icon" type="image/png" href="media/KaboosFACE.png">
     <link rel="shortcut icon" type="image/x-icon" href="media/KaboosFACE.png">
     <link rel="mask-icon" type="image/x-icon" href="media/KaboosFACE.png" color="#111">
     <title>EL-KABOOS</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script>
-      window.console = window.console || function(t) {};
-    </script>
-
   </head>
   
   <body class="before-load loading">
@@ -39,7 +37,8 @@
       </div>
 
       <div class="signa">Kaboos</div>
-
+      
+      <!--
       <div class="LPBG">
         <video autoplay muted playsinline loop preload="auto" webkit-playsinline>
           <source src="./media/noiseBG.mp4" type="video/mp4" />
@@ -51,8 +50,9 @@
           <source src="./media/noiseII.mp4" type="video/mp4" />
         </video>
       </div>
+      -->
 
-      <canvas id="LPtextCanvas"></canvas>
+      <!--<canvas id="LPtextCanvas"></canvas>-->
 
       <div class="menu-nav menu-nav-open">
         <span class="menu-hov-bg"></span>
@@ -184,13 +184,13 @@
     </svg>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+
     <script src="./js/menu.js"></script>
     <script src="./js/tilt.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/Draggable.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/InertiaPlugin.min.js"></script>
 
-    <script type="module" src="./lptext-shader.js"></script>
+    <!--<script type="module" src="./lptext-shader.js"></script>-->
     
     <script src="script.js"></script>
     
