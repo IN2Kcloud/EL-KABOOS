@@ -142,24 +142,43 @@ navs.forEach(nav => {
   function raf() {
     x += ((base.x + tx) - x) * friction;
     y += ((base.y + ty) - y) * friction;
+
     nav.style.setProperty("--mx", `${x}px`);
     nav.style.setProperty("--my", `${y}px`);
     nav.style.setProperty("--rot", `${x * 0.05}deg`);
+
     requestAnimationFrame(raf);
   }
   raf();
 
   function moveRandom() {
     if (hover) return;
-    const newX = Math.random() * (window.innerWidth - padding * 2) + padding - window.innerWidth / 2 + nav.offsetWidth / 2;
-    const newY = Math.random() * (window.innerHeight - padding * 2) + padding - window.innerHeight / 2 + nav.offsetHeight / 2;
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    const halfW = nav.offsetWidth / 2;
+    const halfH = nav.offsetHeight / 2;
+
+    // SAFE bounds (center-based)
+    const minX = -vw / 2 + padding + halfW;
+    const maxX =  vw / 2 - padding - halfW;
+
+    const minY = -vh / 2 + padding + halfH;
+    const maxY =  vh / 2 - padding - halfH;
+
+    const newX = Math.random() * (maxX - minX) + minX;
+    const newY = Math.random() * (maxY - minY) + minY;
+
     tween = gsap.to(base, {
-      x: newX, y: newY,
+      x: newX,
+      y: newY,
       duration: Math.random() * 2 + 1.5,
       ease: "power2.inOut",
       onComplete: moveRandom
     });
   }
+
   moveRandom();
 });
 
