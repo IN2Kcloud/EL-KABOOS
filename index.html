@@ -1,197 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Islame Nouaoui" /> 
     <meta property="og:title" content="EL-KABOOS">
     <meta property="og:description" content="Digital design, video production & creative experiences.">
-    <meta property="og:image" content="media/KaboosFACE.png">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#000">
-    <link rel="apple-touch-icon" type="image/png" href="media/KaboosFACE.png">
-    <link rel="shortcut icon" type="image/x-icon" href="media/KaboosFACE.png">
-    <link rel="mask-icon" type="image/x-icon" href="media/KaboosFACE.png" color="#111">
-    <title>EL-KABOOS</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  
-  <body class="before-load loading">
-    <div class="loadinger">
-      <div class="progress-text">0</div>
-    </div>
+    <meta name="theme-color" content="#fff">
+    <title>Kaboos</title>
     
-    <!-- Landing Page -->
-    <div class="LP">
-      
-      <div class="circle">
-        <div class="circlebg"></div>
-        <div class="circlefg"></div>
-        <div class="surface-shimmer"></div>
-        <div class="eyes">
-          <div class="eye"><div class="pupil"></div></div>
-          <div class="eye"><div class="pupil"></div></div>
-        </div>
-        <span class="mouth"><span></span><span></span><span></span><span></span><span></span></span>
-      </div>
+    <link rel="shortcut icon" href="./assets/kaboos.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://use.typekit.net/uok8swb.css">
+    <link rel="stylesheet" href="base.css">
 
-      <div class="signa">Kaboos</div>
-      
-      <div class="LPBG">
-        <video autoplay muted playsinline loop preload="auto" webkit-playsinline>
-          <source src="./media/noiseBG.mp4" type="video/mp4" />
-        </video>
-      </div>
+    <script type="module" src="https://unpkg.com/three@0.160.0/build/three.module.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
 
-      <div class="LPBGII">
-        <video autoplay muted playsinline loop preload="auto" webkit-playsinline>
-          <source src="./media/noiseII.mp4" type="video/mp4" />
-        </video>
-      </div>
-
-      <!--<canvas id="LPtextCanvas"></canvas>-->
-
-      <div class="menu-nav menu-nav-open">
-        <span class="menu-hov-bg"></span>
-        <p class="menu-open">Open</p>
-        <span class="menu-eye-l"></span>
-        <span class="menu-eye-r"></span>
-        <span class="menu-mouth"><span></span><span></span><span></span><span></span><span></span></span>
-      </div>
-      <div class="menu">
-
-        <div class="marquee-container">
-          <div class="marquee-content">
-            <span class="BF">Kaboos</span>
-            <span class="ms"> • </span>
-            <span class="ms">UNLEASHING PURPOSE THROUGH THE VIVID TAPESTRY OF CREATION, TRANSCENDING THE BOUNDARIES OF ARTISTRY</span>
-            <span class="ms"> • </span>
-            <span class="BF">Kaboos</span>
-            <span class="ms"> • </span>
-            <span class="ms">UNLEASHING PURPOSE THROUGH THE VIVID TAPESTRY OF CREATION, TRANSCENDING THE BOUNDARIES OF ARTISTRY</span>
-            <span class="ms"> • </span>
-            <span class="BF">Kaboos</span>
-            <span class="ms"> • </span>
-            <span class="ms">UNLEASHING PURPOSE THROUGH THE VIVID TAPESTRY OF CREATION, TRANSCENDING THE BOUNDARIES OF ARTISTRY</span>
-            <span class="ms"> • </span>
-          </div>
-        </div>
-
-        <div class="menu-nav menu-nav-close">
-          <span class="menu-hov-bg"></span>
-          <p class="menu-close">Close</p>
-          <span class="menu-eye-l"></span>
-          <span class="menu-eye-r"></span>
-          <span class="menu-mouth"><span></span><span></span><span></span><span></span><span></span></span>
-        </div>
-
-        <div class="menu-col menu-img">
-          <img id="img-1" src="./media/LP.gif" alt="" />
-          <img id="img-2" src="./media/LP.gif" alt="" />
-          <img id="img-3" src="./media/LP.gif" alt="" />
-          <img id="img-4" src="./media/LP.gif" alt="" />
-        </div>
-
-        <div class="menu-links">
-          <div class="menu-link"><span class="hov-bg-min"></span>
-            <p><a href="#">KABOOS</a></p>
-          </div>
-          <div class="menu-link"><span class="hov-bg-min"></span>
-            <p><a href="./story/index.html">STORY</a></p>
-          </div>
-          <div class="menu-link"><span class="hov-bg-min"></span>
-            <p><a href="./work/index.html">PORTFOLIO</a></p>
-          </div>
-          <div class="menu-link"><span class="hov-bg-min"></span>
-            <p><a href="./contact/index.html">GET IN TOUCH</a></p>
-          </div>
-        </div>
-
-        <div class="menu-col menu-items">
-          <div class="menu-logo"><img src="" alt="" /></div>
-          
-          <div class="menu-footer">
-            <div class="menu-sub-col">
-              <div class="menu-sub-item"><p>Follow</p></div>
-              <div class="menu-sub-item"><p>Subscribe</p></div>
-              <br />
-              <div class="menu-sub-item"><p>connect</p></div>
-              <div class="menu-sub-item"><p>Break</p></div>
-              <br />
-              <div class="menu-sub-item"><p>Chat</p></div>
-              <div class="menu-sub-item"><p>Message</p></div>
-              <br />
-              <div class="menu-sub-item"><p>Explore</p></div>
-              <div class="menu-sub-item"><p>Email</p></div>
-              <br />
+<body class="before-load">
+    <div class="loading">
+        <div class="load-counter"></div>
+        <div class="footer-marquee">
+            <div class="footer-marquee-track">
+                <span>
+                    &nbsp; Unleashing Purpose Through The Vivid Tapestry Of Creation &nbsp; • &nbsp; Transcending The Boundaries Of Artistry &nbsp; •
+                </span>
             </div>
-            <div class="menu-sub-col">
-              <div class="menu-sub-item click"><span></span><p><a href="https://www.instagram.com/islame4real/" target="_blank">Instagram</a></p></div>
-              <div class="menu-sub-item click"><span></span><p><a href="https://www.youtube.com/@kaboos4real" target="_blank">Youtube</a></p></div>
-              <br />
-              <div class="menu-sub-item click"><span></span><p><a href="https://www.linkedin.com/in/islame-nouaoui-3ab3b039b" target="_blank">LinkedIn</a></p></div>
-              <div class="menu-sub-item click"><span></span><p><a href="" target="_blank">TikTok</a></p></div>
-              <br />
-              <div class="menu-sub-item click"><span></span><p><a title="Call Us" href="https://wa.me/+213773033640" target="_blank">WhatsApp</a></p></div>
-              <div class="menu-sub-item click"><span></span><p><a href="https://t.me/islame4real" target="_blank">Telegram</a></p></div>
-              <br />
-              <div class="menu-sub-item click"><span></span><p><a href="">www.kaboos.xyz</a></p></div>
-              <div class="menu-sub-item click"><span></span><p><a href="mailto:islame.nouaoui@gmail.com" target="_blank">islame.nouaoui@gmail.com</a></p></div>
-              <br />
-            </div>
-          </div>
-          
         </div>
+    </div>
+
+    <canvas id="grid-bg"></canvas>
+
+    <div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+	<div class="circleII"></div>
+
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span class="BF">Kaboos</span>
+        <span class="ms"> • </span>
+        <span class="ms">Unleashing Purpose Through The Vivid Tapestry Of Creation &nbsp; • &nbsp; Transcending The Boundaries Of Artistry</span>
+        <span class="ms"> • </span>
+        <span class="BF">Kaboos</span>
+        <span class="ms"> • </span>
+        <span class="ms">Unleashing Purpose Through The Vivid Tapestry Of Creation &nbsp; • &nbsp; Transcending The Boundaries Of Artistry</span>
+        <span class="ms"> • </span>
+        <span class="BF">Kaboos</span>
+        <span class="ms"> • </span>
+        <span class="ms">Unleashing Purpose Through The Vivid Tapestry Of Creation &nbsp; • &nbsp; Transcending The Boundaries Of Artistry</span>
+        <span class="ms"> • </span>
       </div>
     </div>
 
+    <div class="skull">
+        <div class="skullcen">
+            <video autoplay muted playsinline loop preload="auto" webkit-playsinline>
+              <source src="./assets/gui.mp4" type="video/mp4" />
+            </video>
+            <img src="./assets/PlaguePro.png"></img>
+        </div>
+        <div class="VMwrap">
+            <img class="VMcen" src="./assets/VANGUARDmarquee.png" alt="">
+        </div>
+        <img class="flameBW" src="./assets/VM-fire-loop-BW-II.gif"></img>
+    </div>
+       
+    <div class="circular-text">
+        <div class="morph-text" id="morph-text">It All Starts With a Scroll</div>
+    </div>
+
+    <section class="content-section">
+
+        <div class="mt">Story</div>
+        <div class="content-marquee top">
+            <div class="content-marquee-track">
+                <p class="story-line"> Some signals are not meant to disappear. KABOOS exists in the quiet space between distortion and precision — where design feels unearthed rather than created, carrying traces of memory, ritual, and something unfinished.</p>
+            </div>
+        </div>
+
+        <div class="inversion-lens">
+          <img src="./assets/b.jpg" alt="story" />
+          <div class="story">
+            <p> KABOOS began as a spark, a restless instinct to turn raw ideas into visuals that feel alive. Born from the belief that design should be bold and nothing should look generic, it grew into a space where identity, storytelling, and smart technology collide to create work with purpose. From branding and design to video, web experiences, and digital strategy, every piece is crafted with intention, executed fast and clean, without noise or unnecessary layers. KABOOS is a one-person powerhouse driven by clarity, emotion, and modern style — built to create digital experiences that leave a mark and continue to live long after the screen goes dark. </p>
+          </div>
+        </div>
     
-    <svg class="min-txt" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
-		  <defs>
-		    <filter id="minFilter">
-			    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" seed="2" stitchTiles="stitch" result="turbulence1">
-				    <animate attributeName="seed" from="2" to="50" dur="3s" repeatCount="indefinite" />
-			    </feTurbulence>
-			    <feDisplacementMap in="SourceGraphic" in2="turbulence1" scale="30" xChannelSelector="R" yChannelSelector="G" />
-		    </filter>
-        <filter id="minminFilter">
-			    <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="3" seed="2" stitchTiles="stitch" result="turbulence1">
-				    <animate attributeName="seed" from="2" to="50" dur="5s" repeatCount="indefinite" />
-			    </feTurbulence>
-			    <feDisplacementMap in="SourceGraphic" in2="turbulence1" scale="20" xChannelSelector="R" yChannelSelector="G" />
-		    </filter>
-		  </defs>
-	  </svg>
-
-    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
-      <filter id="text-distortion">
-        <feTurbulence 
-          id="text-turbulence" 
-          type="turbulence" 
-          baseFrequency="0.02" 
-          numOctaves="1" 
-          result="turbulence" />
-        <feDisplacementMap 
-          in="SourceGraphic" 
-          in2="turbulence" 
-          scale="10" 
-          xChannelSelector="R" 
-          yChannelSelector="G" />
-      </filter>
-    </svg>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
-
-    <script src="./js/menu.js"></script>
-    <script src="./js/tilt.js"></script>
-
-    <!--<script type="module" src="./lptext-shader.js"></script>-->
+    </section>    
     
-    <script src="script.js"></script>
+    <section class="content-section">
+        
+        <div class="mt">Why!</div>
+        <div class="content-marquee top">
+            <div class="content-marquee-track">
+                <p class="story-line">KABOOS emerged from silence — a place where visuals are not decorated, but summoned. Built through instinct, obsession, and controlled chaos, every frame carries intention, every movement leaves residue. No templates. No noise. Only signals designed to remain long after the screen turns black.</p>
+            </div>
+        </div>
+        
+        <section class="cards">
+          <div class="card" id="card-1">
+            <div class="card-wrapper">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./assets/download (1).gif" alt="Card" />
+                </div>
+                <div class="flip-card-back">
+                  <div class="fcbttl">
+                    <p>
+                      Bold Pure Work
+                    </p>
+                  </div>
+                  <span>Quality</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="card-2">
+            <div class="card-wrapper">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./assets/download (1).gif" alt="Card" />
+                </div>
+                <div class="flip-card-back">
+                  <div class="fcbttl">
+                    <p>
+                      Fast True Form
+                    </p>
+                  </div>
+                  <span>Speed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="card-3">
+            <div class="card-wrapper">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./assets/download (1).gif" alt="Card" />
+                </div>
+                <div class="flip-card-back">
+                  <div class="fcbttl">
+                    <p>
+                      Neat Deep View
+                    </p>
+                  </div>
+                  <span>Depth</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="card-4">
+            <div class="card-wrapper">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="./assets/download (1).gif" alt="Card" />
+                </div>
+                <div class="flip-card-back">
+                  <div class="fcbttl">
+                    <p>
+                      Solo Firm Care
+                    </p>
+                  </div>
+                  <span>Prestige</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </section>
+
+    <!-- ================= ARCHIVE + TRANSMISSION ================= -->
+
+    <section class="archive-section">
+        <!--
+        <div class="mt">Archive</div>
+        <div class="content-marquee top">
+            <div class="content-marquee-track">
+                <span>
+                    &nbsp; Kaboos &nbsp; • &nbsp; Archive &nbsp; •
+                    &nbsp; Kaboos &nbsp; • &nbsp; Archive &nbsp; •
+                    &nbsp; Kaboos &nbsp; • &nbsp; Archive &nbsp; •
+                </span>
+            </div>
+        </div>
+        -->
+        <section class="transmission-section">
     
-  </body>
+            <div class="transmission-overlay"></div>
+        
+            <div class="transmission-content">
+        
+                <span class="transmission-label">
+                    ACTIVE TRANSMISSION
+                </span>
+        
+                <h2>
+                    Design should disturb silence.
+                </h2>
+        
+                <p>
+                    KABOOS builds visual experiences
+                    engineered to stay inside memory.
+                    Sharp motion. Heavy atmosphere.
+                    Precise execution.
+                </p>
+        
+            </div>
+        
+        </section>
+    
+    </section>    
+    
+    <footer class="footer">
+        <!--
+        <video autoplay muted playsinline loop preload="auto" webkit-playsinline>
+          <source src="./assets/gui.mp4" type="video/mp4" />
+        </video>
+        -->
+        <div class="footer-marquee">
+            <div class="footer-marquee-track">
+                <span>
+                    &nbsp; Unleashing Purpose Through The Vivid Tapestry Of Creation &nbsp; • &nbsp; Transcending The Boundaries Of Artistry &nbsp; •
+                </span>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <!--
+            <div class="footer-center">
+                <a>ActualitÉs</a>
+                <a>Essais</a>
+                <a>CompÉtition</a>
+                <a>Équipement</a>
+            </div>
+            -->
+            <div class="footer-left">
+                <!--<h2 class="footer-logo">MotorLive</h2>-->
+                <img class="motorlivered" src="./assets/kaboos.png" alt="">
+                <a href="mailto:islame.nouaoui@gmail.com" target="_blank" style="color: #fff; position: relative;" data-draw-line="" class="text-draw w-inline-block">
+                  <p class="footer-tagline"> Take Your Shot ! </p>
+                  <div data-draw-line-box class="text-draw__box"></div>
+                </a>
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/islame4real/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@kaboos4real"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/islame-nouaoui-3ab3b039b"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <p class="footer-copy">© 2020 Kaboos</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="js/index.cad48f07.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Load Three.js and lil-gui from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.18"></script>
+    <!-- RS (no type="module") -->
+    <script src="./js/shaders.js"></script>
+    <script src="./js/script.js"></script>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="./js/DrawSVGPlugin.min.js"></script>
+
+    <script>
+        function magneticEffect(element, strength = 40, easing = 0.15, invert = false) {
+            let mouseX = 0, mouseY = 0;
+            let targetX = 0, targetY = 0;
+            const parent = element.closest(".logo");
+            if (!parent) return;
+
+            const baseTransform = window.getComputedStyle(element).transform === "none" 
+                ? "" 
+                : window.getComputedStyle(element).transform;
+
+            parent.addEventListener("mousemove", e => {
+                const rect = parent.getBoundingClientRect();
+                const relX = e.clientX - (rect.left + rect.width / 2);
+                const relY = e.clientY - (rect.top + rect.height / 2);
+                targetX = (relX / rect.width) * strength * (invert ? -1 : 1);
+                targetY = (relY / rect.height) * strength * (invert ? -1 : 1);
+            });
+
+            parent.addEventListener("mouseleave", () => {
+                targetX = 0;
+                targetY = 0;
+            });
+
+            function animate() {
+                mouseX += (targetX - mouseX) * easing;
+                mouseY += (targetY - mouseY) * easing;
+                gsap.set(element, {
+                    transform: `${baseTransform} translate(${mouseX}px, ${mouseY}px)`
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        const logoImg = document.querySelector(".logo img");
+        const logoLink = document.querySelector(".logo a");
+        if (logoImg) magneticEffect(logoImg, 35, 0.15);
+        if (logoLink) magneticEffect(logoLink, 20, 0.12, true);
+    </script>
+
+    <script type="module">
+        const morphText = document.getElementById("morph-text");
+        const words = ["Scroll Down", "It All Starts With a Scroll", "Scroll Down", "It All Starts With a Scroll"];
+        let wordIndex = 0;
+
+        function morphWords() {
+            gsap.to(morphText, {
+                duration: 0.5,
+                opacity: 0,
+                scale: 0.9,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    wordIndex = (wordIndex + 1) % words.length;
+                    morphText.textContent = words[wordIndex];
+                    gsap.to(morphText, {
+                        duration: 0.5,
+                        opacity: 1,
+                        scale: 1,
+                        ease: "power2.inOut",
+                    });
+                },
+            });
+        }
+        setInterval(morphWords, 2500);
+        gsap.to(morphText, {
+            duration: 2,
+            scale: 1.05,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+        });
+    </script>
+
+    <script>
+        const skull = document.querySelector('.skull');
+        const strength = 50; 
+        const ease = 0.2; 
+        
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!skull) return;
+            const rect = skull.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            mouseX = (e.clientX - centerX) / strength;
+            mouseY = (e.clientY - centerY) / strength;
+        });
+        
+        function animate() {
+            targetX += (mouseX - targetX) * ease;
+            targetY += (mouseY - targetY) * ease;
+            gsap.to(skull, {
+                x: targetX,
+                y: targetY,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        const spin = gsap.to(".VMcen", {
+            rotation: -360,
+            repeat: -1,
+            ease: "none",
+            duration: 20,
+            transformOrigin: "50% 50%",
+        });
+        
+        const skullCen = document.querySelector(".skullcen");
+        if (skullCen) {
+            skullCen.addEventListener("mouseenter", () => {
+                gsap.to(spin, { timeScale: 5, duration: 1, ease: "power2.out" });
+            });
+            skullCen.addEventListener("mouseleave", () => {
+                gsap.to(spin, { timeScale: 1, duration: 1.2, ease: "power2.inOut" });
+            });
+        }
+    </script>
+</body>
 </html>
-
