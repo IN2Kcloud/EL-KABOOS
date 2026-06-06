@@ -100,6 +100,53 @@ html.lenis,html.lenis body{height:auto;}
 .lenis.lenis-smooth iframe{pointer-events:none;}
 @media (max-width: 1000px) {.card{width:20vw;aspect-ratio: 1/5;} .card p {font-size: 1rem;} .flip-card-back span {font-size: 1rem;}}
 
+/* ================= WORK SECTION ================= */
+.work-section { position: relative; width: 100%; padding: 0vh 0vw; }
+.wt {top:-15%;}
+@media (max-width: 1000px) {.wt {top:-12%;}}
+/* ================= BLOCK ================= */
+.block { padding: 1rem 5rem 1rem 5rem; display: flex; justify-content: space-between; align-items: center; width: 100vw; height: fit-content; border-top: 1px solid #000; border-bottom: 1px solid #000; background-color: #fff; } /* Main block row */
+/* ================= TITLE & LINK ================= */
+.block__title, .block a { position: relative; font-size: 5rem; margin: 0 0 .5rem 0; padding: 0; cursor: pointer; font-family: 'Audemars', 'Darkella', "Inter", sans-serif; font-weight: lighter; color: #000; text-align: center; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; } /* Heading and links */
+/* ================= PLAY LINK ================= */
+.PLAY { position: relative; display: inline-block; font-size: 4rem; font-weight: bold; color: #000; text-decoration: none; overflow: hidden; } /* Play button style */
+/* ================= TITLE HOVER ================= */
+.block__title:hover { color: #000; } /* Maintain title color on hover */
+/* ================= TITLE LETTERS ================= */
+.block__title span { display: inline-block; white-space: pre; } /* Individual animated characters */
+/* ================= UNDERLINE EFFECT ================= */
+.block[data-fx="6"] a::after, a.content__text-link[data-fx="6"]::after { content: ''; z-index: -1; width: 100%; bottom: .25rem; left: 0; position: absolute; height: 2px; background: currentColor; transform: scale3d(0,1,1); transform-origin: 100% 50%; transition: transform .7s cubic-bezier(.860,0,.070,1); } /* Animated underline */
+a.content__text-link[data-fx="6"]::after { bottom: 0; } /* Text-link underline position */
+.block[data-fx="6"] a:hover::after, a.content__text-link[data-fx="6"]:hover::after { transform: scale3d(1,1,1); } /* Reveal underline */
+/* ================= HOVER REVEAL ================= */
+.hover-reveal { position: fixed; width: 250px; height: 150px; top: 0; left: 0; pointer-events: none; opacity: 0; } /* Floating preview container */
+/* ================= HOVER REVEAL INNER ================= */
+.hover-reveal__inner, .hover-reveal__img { width: 100%; height: 100%; position: relative; } /* Preview wrappers */
+/* ================= HOVER DECORATION ================= */
+.hover-reveal__deco { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-color: #000; } /* Background layer */
+/* ================= HOVER IMAGE ================= */
+.hover-reveal__img { background-size: cover; background-position: 50% 50%; } /* Preview image */
+
+/* ================= MOBILE HOVER REVEAL ================= */
+@media (max-width:500px){
+  .hover-reveal { left: 50% !important; transform: translateX(-50%) !important; top: auto !important; bottom: 20px !important; position: fixed !important; } /* Center preview on mobile */
+}
+
+/* ================= DESKTOP LAYOUT ================= */
+@media screen and (min-width:53em){
+  .block { align-items: center; } /* Center block content */
+  .content { position: relative; display: flex; flex-direction: column; justify-content: start; align-items: center; gap: 20px; margin: 0 auto; padding-top: 0vh; min-width: 80vw; height: fit-content; text-align: left; } /* Content wrapper */
+}
+
+/* ================= SMALL DEVICES ================= */
+@media only screen and (max-device-width:500px){
+  .title { font-size: .5rem; } /* Small title */
+  .block { flex-direction: column; } /* Stack block content */
+  .block__title { font-size: 1.5rem; } /* Smaller heading */
+  .block a { font-size: 1.5rem; } /* Smaller link */
+  .content { padding-top: 0vh; } /* Reset spacing */
+}
+
 /* ================= ARCHIVE ================= */
 .archive-section { position: relative; width: 100%; padding: 0vh 0vw; } /* Archive section wrapper */
 .archive-grid { display: flex; flex-direction: column; gap: 2rem; margin-top: 8rem; } /* Archive entries layout */
