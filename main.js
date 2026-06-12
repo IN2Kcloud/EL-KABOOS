@@ -465,3 +465,8 @@ function initDrawRandomUnderline() {
 document.addEventListener('DOMContentLoaded', function() {
   initDrawRandomUnderline();
 });
+
+// ========== BUTTON ========== //
+document.querySelector(".visit-btn").addEventListener("click", () => {
+  alert("Visiting link...");
+});
