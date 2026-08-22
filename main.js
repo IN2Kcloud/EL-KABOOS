@@ -143,15 +143,6 @@ function finishLoading() {
     duration: .5,
     ease: "power4.in"
   });
-  /*
-  // ⚡ counter follows AFTER
-  tl.to(".load-counter", {
-    scale: 1.5,
-    opacity: 0,
-    duration: 0.6,
-    ease: "power3.in"
-  }, "+=0.4"); // small delay after skull
-  */
   // 🔥 loader fades out LAST
   tl.to(".loading", {
   filter: "blur(2px) contrast(120%)",
@@ -159,7 +150,6 @@ function finishLoading() {
   duration: 0.2,
   ease: "none"
 });
-
 tl.to(".loading", {
   opacity: 0,
   duration: 0.4,
@@ -176,7 +166,7 @@ function revealLanding() {
 
   const tl = gsap.timeline();
 
-  tl.to(".skull", {
+  tl.to(".hero-img", {
     scale: 1,
     opacity: 1,
     filter: "blur(0px)",
@@ -270,6 +260,507 @@ function isDesktop() {
   // Regular expression to match common desktop user agents
   const desktopRegex = /Windows NT|Macintosh/;
   return desktopRegex.test(navigator.userAgent);
+}
+
+// ------- HERO IMAGE ------- //
+const img=document.querySelector(".hero-img");
+window.addEventListener("mousemove",(e)=>{
+    const x=(e.clientX/innerWidth-.5)*20;
+    const y=(e.clientY/innerHeight-.5)*20;
+    gsap.to(img, {
+        rotateY: x,
+        rotateX: -y,
+        x: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        overwrite: true
+    });
+});
+gsap.to(".hero-marquee-track",{
+    xPercent:-33.333,
+    duration:120,
+    ease:"none",
+    repeat:-1
+});
+
+// =========================================================
+// HERO COMIC ENERGY SYSTEM
+// =========================================================
+
+const heroEnergyCanvas =
+    document.getElementById("hero-energy-canvas");
+
+const heroEnergy =
+    document.querySelector(".hero-energy");
+
+const heroImg =
+    document.querySelector(".hero-img");
+
+if (heroEnergyCanvas && heroEnergy && heroImg) {
+
+    const ctx = heroEnergyCanvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+
+    const mouse = {
+        x: 0.5,
+        y: 0.5
+    };
+
+    const targetMouse = {
+        x: 0.5,
+        y: 0.5
+    };
+
+    let time = 0;
+
+    // -----------------------------------------------------
+    // RESIZE
+    // -----------------------------------------------------
+
+    function resizeHeroEnergy() {
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        heroEnergyCanvas.width = width * dpr;
+        heroEnergyCanvas.height = height * dpr;
+
+        heroEnergyCanvas.style.width = width + "px";
+        heroEnergyCanvas.style.height = height + "px";
+
+        ctx.setTransform(
+            dpr,
+            0,
+            0,
+            dpr,
+            0,
+            0
+        );
+    }
+
+    resizeHeroEnergy();
+
+    window.addEventListener(
+        "resize",
+        resizeHeroEnergy
+    );
+
+
+    // -----------------------------------------------------
+    // MOUSE
+    // -----------------------------------------------------
+
+    window.addEventListener("mousemove", (e) => {
+
+        targetMouse.x =
+            e.clientX / width;
+
+        targetMouse.y =
+            e.clientY / height;
+
+    });
+
+
+    // -----------------------------------------------------
+    // COMIC PARTICLES
+    // -----------------------------------------------------
+
+    const particles = [];
+
+    const particleCount =
+        window.innerWidth < 1000 ? 25 : 55;
+
+    for (let i = 0; i < particleCount; i++) {
+
+        particles.push({
+
+            angle:
+                Math.random() * Math.PI * 2,
+
+            distance:
+                170 + Math.random() * 420,
+
+            size:
+                Math.random() * 5 + 2,
+
+            speed:
+                Math.random() * .15 + .03,
+
+            rotation:
+                Math.random() * Math.PI,
+
+            rotationSpeed:
+                (Math.random() - .5) * .02,
+
+            alpha:
+                Math.random() * .45 + .15,
+
+            type:
+                Math.random() > .65
+                    ? "square"
+                    : "diamond"
+
+        });
+
+    }
+
+
+    // -----------------------------------------------------
+    // DRAW DIAMOND
+    // -----------------------------------------------------
+
+    function drawDiamond(x, y, size, rotation) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, -size);
+        ctx.lineTo(size * .35, 0);
+        ctx.lineTo(0, size);
+        ctx.lineTo(-size * .35, 0);
+
+        ctx.closePath();
+
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+
+    // -----------------------------------------------------
+    // DRAW SQUARE
+    // -----------------------------------------------------
+
+    function drawSquare(x, y, size, rotation) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+
+        ctx.fillRect(
+            -size / 2,
+            -size / 2,
+            size,
+            size
+        );
+
+        ctx.restore();
+    }
+
+
+    // -----------------------------------------------------
+    // ANIMATION
+    // -----------------------------------------------------
+
+    function renderHeroEnergy() {
+
+        time += 0.01;
+
+        mouse.x +=
+            (targetMouse.x - mouse.x) * .04;
+
+        mouse.y +=
+            (targetMouse.y - mouse.y) * .04;
+
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        // -------------------------------------------------
+        // CENTER
+        // -------------------------------------------------
+
+        const centerX =
+            width * .5 +
+            (mouse.x - .5) * 30;
+
+        const centerY =
+            height * .56 +
+            (mouse.y - .5) * 20;
+
+
+        // -------------------------------------------------
+        // RADIAL HALFTONE DOTS
+        // -------------------------------------------------
+
+        const spacing = 18;
+
+        const radius = Math.min(width, height) * .34;
+
+        for (
+            let y = -radius;
+            y < radius;
+            y += spacing
+        ) {
+
+            for (
+                let x = -radius;
+                x < radius;
+                x += spacing
+            ) {
+
+                const distance =
+                    Math.sqrt(x * x + y * y);
+
+                if (distance > radius)
+                    continue;
+
+
+                const fade =
+                    1 - distance / radius;
+
+                const pulse =
+                    Math.sin(
+                        time * 2 +
+                        distance * .025
+                    ) * .5 + .5;
+
+
+                const px =
+                    centerX +
+                    x +
+                    (mouse.x - .5) *
+                    distance *
+                    .08;
+
+                const py =
+                    centerY +
+                    y +
+                    (mouse.y - .5) *
+                    distance *
+                    .08;
+
+
+                const size =
+                    1 +
+                    fade * 2 +
+                    pulse * .8;
+
+
+                ctx.fillStyle =
+                    `rgba(0,0,0,${fade * .22})`;
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    px,
+                    py,
+                    size,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fill();
+            }
+        }
+
+
+        // -------------------------------------------------
+        // FLOATING COMIC FRAGMENTS
+        // -------------------------------------------------
+
+        particles.forEach(p => {
+
+            p.angle += p.speed * .002;
+
+            p.rotation += p.rotationSpeed;
+
+
+            const breathing =
+                Math.sin(
+                    time * 1.5 +
+                    p.distance
+                ) * 10;
+
+
+            const distance =
+                p.distance +
+                breathing;
+
+
+            const px =
+                centerX +
+                Math.cos(p.angle) *
+                distance;
+
+
+            const py =
+                centerY +
+                Math.sin(p.angle) *
+                distance;
+
+
+            ctx.fillStyle =
+                `rgba(0,0,0,${p.alpha})`;
+
+
+            if (p.type === "diamond") {
+
+                drawDiamond(
+                    px,
+                    py,
+                    p.size,
+                    p.rotation
+                );
+
+            } else {
+
+                drawSquare(
+                    px,
+                    py,
+                    p.size,
+                    p.rotation
+                );
+
+            }
+
+        });
+
+
+        // -------------------------------------------------
+        // RADIAL IMPACT LINES
+        // -------------------------------------------------
+
+        ctx.lineWidth = 1;
+
+        const lineCount = 24;
+
+        for (let i = 0; i < lineCount; i++) {
+
+            const angle =
+                (Math.PI * 2 / lineCount) * i;
+
+            const inner =
+                radius * .58;
+
+            const outer =
+                radius * (
+                    .82 +
+                    Math.sin(time * 1.5 + i) * .08
+                );
+
+
+            const x1 =
+                centerX +
+                Math.cos(angle) * inner;
+
+            const y1 =
+                centerY +
+                Math.sin(angle) * inner;
+
+
+            const x2 =
+                centerX +
+                Math.cos(angle) * outer;
+
+            const y2 =
+                centerY +
+                Math.sin(angle) * outer;
+
+
+            ctx.strokeStyle =
+                `rgba(0,0,0,${.08 + Math.sin(time + i) * .03})`;
+
+            ctx.beginPath();
+
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+
+            ctx.stroke();
+
+        }
+
+
+        requestAnimationFrame(
+            renderHeroEnergy
+        );
+    }
+
+    renderHeroEnergy();
+
+
+    // -----------------------------------------------------
+    // PARALLAX THE DOM ELEMENTS
+    // -----------------------------------------------------
+
+    const bursts =
+        document.querySelectorAll(".hero-burst");
+
+    const speedLines =
+        document.querySelector(".hero-speed-lines");
+
+    const halftone =
+        document.querySelector(".hero-halftone");
+
+
+    window.addEventListener("mousemove", (e) => {
+
+        const x =
+            e.clientX / width - .5;
+
+        const y =
+            e.clientY / height - .5;
+
+
+        gsap.to(halftone, {
+
+            x: x * 25,
+            y: y * 20,
+
+            duration: 1.4,
+            ease: "power3.out",
+
+            overwrite: true
+
+        });
+
+
+        gsap.to(speedLines, {
+
+            x: x * -20,
+            y: y * -15,
+
+            rotation: x * 2,
+
+            duration: 1.5,
+            ease: "power3.out",
+
+            overwrite: true
+
+        });
+
+
+        bursts.forEach((burst, index) => {
+
+            gsap.to(burst, {
+
+                x: x * (index + 1) * 12,
+                y: y * (index + 1) * 8,
+
+                duration: 1.5,
+                ease: "power3.out",
+
+                overwrite: true
+
+            });
+
+        });
+
+    });
 }
 
 // BG points -----------------------------------------------------------------
@@ -378,8 +869,6 @@ function draw() {
 }
 
 draw();
-
-
 
 
 // ------- HOVER ------- //
