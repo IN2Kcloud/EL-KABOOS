@@ -155,206 +155,204 @@ function initHoverEffect(container) {
   };
 }
 
-// ============================== CARDS ============================== //
+// =========================================================
+// CAPABILITIES INTERACTION
+// =========================================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
+const capabilityRows =
+    document.querySelectorAll(".capability");
 
-  // smooth scroll
-  const lenis = new Lenis();
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-  gsap.ticker.lagSmoothing(0);
+capabilityRows.forEach((row) => {
 
-  const cards = gsap.utils.toArray(".card");
-  const totalScrollHeight = window.innerHeight * 3;
-  const positions = [14, 38, 62, 86];
-  const rotations = [-15, -7.5, 7.5, 15];
+    const title =
+        row.querySelector(".capability-main h2");
 
-  // pin the cards section
-  ScrollTrigger.create({
-    trigger: ".cards",
-    start: "top top",
-    end: () => `+=${totalScrollHeight}`,
-    pin: true,
-    pinSpacing: true,
-  });
+    const arrow =
+        row.querySelector(".capability-arrow");
 
-  // spread cards
-  cards.forEach((card, index) => {
-    gsap.to(card, {
-      left: `${positions[index]}%`,
-      rotation: `${rotations[index]}`,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".cards",
-        start: "top top",
-        end: () => `+=${window.innerHeight}`,
-        scrub: 0.5,
-        id: `spread-${index}`,
-      },
+
+    row.addEventListener("mousemove", (e) => {
+
+        const rect =
+            row.getBoundingClientRect();
+
+        const x =
+            (e.clientX - rect.left) /
+            rect.width -
+            0.5;
+
+        const y =
+            (e.clientY - rect.top) /
+            rect.height -
+            0.5;
+
+
+        gsap.to(title, {
+
+            x: x * 35,
+            y: y * 8,
+
+            duration: .5,
+
+            ease: "power3.out",
+
+            overwrite: true
+
+        });
+
+
+        gsap.to(arrow, {
+
+            x: x * 15,
+            y: y * 15,
+
+            duration: .5,
+
+            ease: "power3.out",
+
+            overwrite: true
+
+        });
+
     });
-  });
 
-  // rotate and flip cards with staggered effect
-  cards.forEach((card, index) => {
-    const frontEl = card.querySelector(".flip-card-front");
-    const backEl = card.querySelector(".flip-card-back");
 
-    const staggerOffset = index * 0.05;
-    const startOffset = 1 / 3 + staggerOffset;
-    const endOffset = 2 / 3 + staggerOffset;
+    row.addEventListener("mouseleave", () => {
 
-    ScrollTrigger.create({
-      trigger: ".cards",
-      start: "top top",
-      end: () => `+=${totalScrollHeight}`,
-      scrub: 1,
-      id: `rotate-flip-${index}`,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        if (progress >= startOffset && progress <= endOffset) {
-          const animationProgress = (progress - startOffset) / (1 / 3);
-          const frontRotation = -180 * animationProgress;
-          const backRotation = 180 - 180 * animationProgress;
-          const cardRotation = rotations[index] * (1 - animationProgress);
+        gsap.to(title, {
 
-          frontEl.style.transform = `rotateY(${frontRotation}deg)`;
-          backEl.style.transform = `rotateY(${backRotation}deg)`;
-          card.style.transform = `translate(-50%, -50%) rotate(${cardRotation}deg)`;
-        }
-      },
+            x: 0,
+            y: 0,
+
+            duration: .7,
+
+            ease: "elastic.out(1, .5)"
+
+        });
+
+
+        gsap.to(arrow, {
+
+            x: 0,
+            y: 0,
+
+            duration: .7,
+
+            ease: "elastic.out(1, .5)"
+
+        });
+
     });
-  });
 
-  // --- Inside your DOMContentLoaded or below Lenis init ---
+});
 
-  const thumb = document.querySelector('.scroll-thumb');
-  const track = document.querySelector('.scroll-track');
-  
-  // 1. Move thumb when page scrolls
-  lenis.on('scroll', ({ progress }) => {
-    // progress is a value between 0 and 1
-    const trackHeight = track.offsetHeight - thumb.offsetHeight;
-    const moveY = progress * trackHeight;
-    
-    // Use GSAP for maximum smoothness (since you already have it)
-    gsap.set(thumb, { y: moveY });
-  });
-  
-  // 2. Drag logic for Touch/Mouse
-  let isDragging = false;
-  
-  const onDrag = (e) => {
-    if (!isDragging) return;
-    
-    const rect = track.getBoundingClientRect();
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
-    // Calculate percentage of track
-    let pos = (clientY - rect.top) / rect.height;
-    pos = Math.max(0, Math.min(1, pos)); // Clamp between 0 and 1
-    
-    // Tell Lenis to scroll to that percentage
-    lenis.scrollTo(pos * (document.documentElement.scrollHeight - window.innerHeight), {
-      immediate: true
+// =========================================================
+// PROCESS INTERACTION
+// =========================================================
+
+const processSteps = document.querySelectorAll(".process-step");
+
+processSteps.forEach((step, index) => {
+
+    const marker = step.querySelector(".process-marker");
+    const heading = step.querySelector("h2");
+
+    step.addEventListener("mousemove", (e) => {
+
+        const rect = step.getBoundingClientRect();
+
+        const x =
+            (e.clientX - rect.left) /
+            rect.width -
+            0.5;
+
+        const y =
+            (e.clientY - rect.top) /
+            rect.height -
+            0.5;
+
+        gsap.to(heading, {
+            x: x * 35,
+            y: y * 12,
+            duration: .6,
+            ease: "power3.out",
+            overwrite: true
+        });
+
+        gsap.to(marker, {
+            x: x * 20,
+            y: y * 15,
+            duration: .6,
+            ease: "power3.out",
+            overwrite: true
+        });
+
     });
-  };
-  
-  thumb.addEventListener('mousedown', () => isDragging = true);
-  thumb.addEventListener('touchstart', () => isDragging = true, { passive: false });
-  
-  window.addEventListener('mousemove', onDrag);
-  window.addEventListener('touchmove', onDrag, { passive: false });
-  
-  window.addEventListener('mouseup', () => isDragging = false);
-  window.addEventListener('touchend', () => isDragging = false);
-  
-});
 
-// ================= ARCHIVE REVEAL ================= //
 
-gsap.utils.toArray(".archive-entry").forEach((entry) => {
+    step.addEventListener("mouseleave", () => {
 
-  gsap.from(entry, {
-    x: -100,
-    opacity: 0,
-    duration: 1.4,
-    ease: "power4.out",
-    scrollTrigger: {
-      trigger: entry,
-      start: "top 85%"
-    }
-  });
+        gsap.to(heading, {
+            x: 0,
+            y: 0,
+            duration: .8,
+            ease: "elastic.out(1,.5)"
+        });
+
+        gsap.to(marker, {
+            x: 0,
+            y: 0,
+            duration: .8,
+            ease: "elastic.out(1,.5)"
+        });
+
+    });
 
 });
 
+// =========================================================
+// FINAL SECTION
+// =========================================================
 
-// ================= TRANSMISSION SCALE ================= //
+const finalSection = document.querySelector(".final-section");
+const finalTitle = document.querySelector(".final-title");
 
-gsap.from(".transmission-content", {
-  scale: 0.8,
-  opacity: 0,
-  duration: 2,
-  ease: "expo.out",
-  scrollTrigger: {
-    trigger: ".transmission-section",
-    start: "top 70%"
-  }
-});
+if (finalSection && finalTitle) {
 
-/*
-// ================= MANIFEST FLOAT ================= //
+    finalSection.addEventListener("mousemove", (e) => {
 
-gsap.utils.toArray(".manifest-card").forEach((card, i) => {
+        const rect = finalSection.getBoundingClientRect();
 
-  gsap.from(card, {
-    y: 150,
-    opacity: 0,
-    rotateZ: gsap.utils.random(-4,4),
-    duration: 1.5,
-    delay: i * 0.15,
-    ease: "power4.out",
-    scrollTrigger: {
-      trigger: card,
-      start: "top 90%"
-    }
-  });
+        const x =
+            (e.clientX - rect.left) /
+            rect.width -
+            .5;
 
-  gsap.to(card, {
-    y: 20 + i * 5,
-    duration: 4 + i,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut"
-  });
+        const y =
+            (e.clientY - rect.top) /
+            rect.height -
+            .5;
 
-});
+        gsap.to(finalTitle, {
+            x: x * 12,
+            y: y * 8,
+            duration: .8,
+            ease: "power3.out",
+            overwrite: true
+        });
 
-// ================= TERMINAL SIGNAL ================= //
-
-gsap.from(".terminal-window", {
-  scale: 0.92,
-  opacity: 0,
-  filter: "blur(10px)",
-  duration: 2,
-  ease: "expo.out",
-  scrollTrigger: {
-    trigger: ".terminal-section",
-    start: "top 75%"
-  }
-});
+    });
 
 
-// ================= LOW FREQUENCY FLOAT ================= //
+    finalSection.addEventListener("mouseleave", () => {
 
-gsap.to(".terminal-window", {
-  y: 15,
-  duration: 4,
-  repeat: -1,
-  yoyo: true,
-  ease: "sine.inOut"
-});
-*/
+        gsap.to(finalTitle, {
+            x: 0,
+            y: 0,
+            duration: 1,
+            ease: "elastic.out(1,.5)"
+        });
+
+    });
+
+}
